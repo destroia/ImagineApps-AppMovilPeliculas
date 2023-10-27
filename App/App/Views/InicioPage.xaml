@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:App.ViewModels"
+             x:Class="App.Views.InicioPage" 
+             >
+   
+    <ContentPage.Content >
+        <ScrollView  BackgroundColor="White">
+            <StackLayout Padding="12" >
+                <Label Text="Peliculas" Margin="8" FontSize="Title"   HorizontalOptions="Center" FontAttributes="Italic" LineBreakMode="WordWrap" Visual="Default" TextColor="#000000"/>
+                <FlexLayout x:Name="cate" BindableLayout.ItemsSource="{Binding Films}" 
+                            Wrap="Wrap"
+                            Direction="Row"
+                            JustifyContent="Start"
+                            AlignItems="Start"
+                            AlignContent="Start"
+                            Padding="8">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate
+                            >
+                            <Grid Margin="4,4,4,4"
+                                            FlexLayout.Basis="{OnIdiom Phone='50%', Tablet='33%'}"
+                                            FlexLayout.AlignSelf="Start">
+
+                                <Frame  
+                                            Padding="8"
+                                            VerticalOptions="Start"
+                                            HasShadow="True" HeightRequest="185">
+                                    <Grid Padding="0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="150"/>
+                                            <RowDefinition Height="35"/>
+                                        </Grid.RowDefinitions>
+                                        <Image
+			                                         HeightRequest="150"
+			                                        
+                                                    Aspect="AspectFit"
+			                                        Source = "{Binding Imagen}">
+                                        </Image>
+                                        <!--<Image Source="{Binding Imagen}"  HeightRequest="150" Aspect="AspectFit"/>-->
+                                        <Label Grid.Row="1" Margin="10,0" TranslationY="-5" TextColor="Black" HorizontalOptions="CenterAndExpand" Text="{Binding Titulo}"/>
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:InicioViewModel}}, Path=TapCommand}" CommandParameter="{Binding}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+                <!--<ActivityIndicator IsRunning="{Binding Cargando}" Scale="2"  />-->
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

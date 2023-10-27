@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.DetallesPage" Title="{Binding Film.Titulo}">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout Padding="12,12">
+
+                   
+                        <Frame  HeightRequest="500"  CornerRadius="8">
+                            <Image  HeightRequest="400" Aspect="AspectFit"  Source = "{Binding Film.Imagen}" ></Image>
+                            
+                        </Frame>
+                    <Grid  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Titulo " TranslationY="4" TextColor="Black" FontSize="Large"></Label>
+                        <Label Text="{Binding Film.Titulo}" Grid.Column="2"  FontSize="Title"></Label>
+                    </Grid>
+                   
+                        <!--<Label Text="{Binding Film.Sinopsis}" FontSize="Title"></Label>-->
+                    <Grid  >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="400" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.35*"/>
+                            <ColumnDefinition Width="0*"/>
+                           
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Sinopsis " TranslationY="4" TextColor="Black" FontSize="Large"></Label>
+                        <Label Text="{Binding Film.Sinopsis}" Grid.Column="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" FontSize="Subtitle" TextColor="Black"></Label>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
